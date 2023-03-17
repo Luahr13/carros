@@ -60,8 +60,7 @@ public class GaragemResource {
     @Path("/{id}")
     public Response updateGaragem(@PathParam("id") Long id, GaragemDTO garagemDTO){
         GaragemResponseDTO garagem = garagemService.update(id, garagemDTO);
-        return Response.ok(garagem).build();
-
+        return Response.status(Status.NO_CONTENT).entity(garagem).build();
     }
 
     //Deletar um obj por ID
