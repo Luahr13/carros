@@ -33,7 +33,7 @@ public class GaragemResource {
     //Insere
     @POST
     @Transactional
-    public Response insert(@Valid GaragemDTO garagemDTO){
+    public Response create(@Valid GaragemDTO garagemDTO){
         GaragemResponseDTO garagem = garagemService.create(garagemDTO);
         return Response.status(Status.CREATED).entity(garagem).build();
     }
