@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.transaction.Transactional;
 import javax.validation.ConstraintViolation;
@@ -16,6 +17,7 @@ import br.unitins.dto.GaragemResponseDTO;
 import br.unitins.model.Garagem;
 import br.unitins.repository.GaragemRepository;
 
+@ApplicationScoped
 public class GaragemServiceImpl implements GaragemService{
 
     @Inject

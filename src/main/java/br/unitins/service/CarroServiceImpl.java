@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.transaction.Transactional;
 import javax.validation.ConstraintViolation;
@@ -17,6 +18,7 @@ import br.unitins.model.Carro;
 import br.unitins.repository.CarroRepository;
 import br.unitins.repository.GaragemRepository;
 
+@ApplicationScoped
 public class CarroServiceImpl implements CarroService{
 
     @Inject
