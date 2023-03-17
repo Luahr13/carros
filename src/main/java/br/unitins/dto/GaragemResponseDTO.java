@@ -43,4 +43,13 @@ public class GaragemResponseDTO {
         this.endereco = endereco;
     }
 
+    public Map<String, Object> getGaragem() {
+        return garagem;
+    }
+
+    public void setGaragem(Map<String, Object> garagem) {
+        this.garagem = garagem;
+    }
+
+    
 }
