@@ -1,7 +1,6 @@
 package br.unitins.resource;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 import javax.inject.Inject;
 import javax.transaction.Transactional;
@@ -19,9 +18,7 @@ import javax.ws.rs.core.Response.Status;
 
 import br.unitins.dto.CarroDTO;
 import br.unitins.dto.CarroResponseDTO;
-import br.unitins.model.Carro;
-import br.unitins.repository.CarroRepository;
-import br.unitins.repository.GaragemRepository;
+import br.unitins.service.CarroService;
 
 @Path("/carros")
 @Consumes(MediaType.APPLICATION_JSON)
@@ -29,52 +26,36 @@ import br.unitins.repository.GaragemRepository;
 public class CarroResource {
     
     @Inject
-    private CarroRepository carroRepository;
+    private CarroService carroService;
     
-    @Inject
-    private GaragemRepository garagemRepository;
-
     //Insere
     @POST
     @Transactional
     public Response insert(CarroDTO dto){
-        Carro entity = new Carro();
-        entity.setModelo(dto.getModelo());
-        entity.setCor(dto.getCor());
-        entity.setGaragem(garagemRepository.findById(dto.getIdGaragem()));
-
-        carroRepository.persist(entity);
-
-        return Response
-            .status(Status.CREATED)
-            .entity(new CarroResponseDTO(entity))
-            .build();
+        CarroResponseDTO carro = carroService.create(dto);
+        return Response.status(Status.CREATED).entity(carro).build();
 
     }
 
     //Lista de carros
     @GET
     public List<CarroResponseDTO> getAll() {
-    
-        return carroRepository.findAll()
-        .stream()
-        .map(carro -> new CarroResponseDTO(carro))
-        .collect(Collectors.toList());
+        return carroService.getAll();
     }
 
 
     //Buscar por nome
     @GET
     @Path("/search/{modelo}")
-    public List<Carro> searchCarroNAME(@PathParam("modelo") String modelo){
-        return carroRepository.findByNomeList(modelo);
+    public List<CarroResponseDTO> searchCarroNAME(@PathParam("modelo") String modelo){
+        return carroService.findByNome(modelo);
     }
 
     //Busca por ID
     @GET
     @Path("/{id}")
-    public Carro searchCarroID(@PathParam("id") Long id){
-        return carroRepository.findById(id);
+    public CarroResponseDTO searchCarroID(@PathParam("id") Long id){
+        return carroService.findById(id);
     }
 
     //Atualiza
@@ -82,24 +63,17 @@ public class CarroResource {
     @Path("/{id}")
     @Transactional
     public Response updateCarro(@PathParam("id") Long id, CarroDTO dto){
-        Carro entity = carroRepository.findById(id);
-
-        entity.setModelo(dto.getModelo());
-        entity.setCor(dto.getCor());
-
-        entity.setGaragem(garagemRepository.findById(dto.getIdGaragem()));
-
-        return Response.status(Status.NO_CONTENT).build();
+        CarroResponseDTO carro = carroService.update(id, dto);
+        return Response.ok(carro).build();
     }
 
     //Deletar um obj por ID
     @DELETE
     @Path("/{id}")
     @Transactional
-    public Carro deletarCarro(@PathParam("id") Long id){
-        Carro entity = carroRepository.findById(id);
-        carroRepository.delete(entity);
-        return entity;
+    public Response deletarCarro(@PathParam("id") Long id){
+        carroService.delete(id);
+        return Response.status(Status.NO_CONTENT).build();
     }
 
 }
