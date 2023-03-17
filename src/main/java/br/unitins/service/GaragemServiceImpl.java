@@ -54,6 +54,7 @@ public class GaragemServiceImpl implements GaragemService{
     }
 
     @Override
+    @Transactional
     public GaragemResponseDTO update(Long id, GaragemDTO garagemDTO) {
         Garagem entity = garagemRepository.findById(id);
 
@@ -65,6 +66,7 @@ public class GaragemServiceImpl implements GaragemService{
     }
 
     @Override
+    @Transactional
     public void delete(Long id) {
         garagemRepository.deleteById(id);
     }

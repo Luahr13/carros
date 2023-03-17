@@ -1,6 +1,5 @@
 package br.unitins.repository;
 
-
 import java.util.List;
 
 import javax.enterprise.context.ApplicationScoped;
