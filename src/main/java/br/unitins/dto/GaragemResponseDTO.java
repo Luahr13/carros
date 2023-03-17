@@ -1,16 +1,22 @@
 package br.unitins.dto;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import br.unitins.model.Garagem;
 
 public class GaragemResponseDTO {
     private Long id;
     private String nome;
     private String endereco;
+    private Map<String, Object> garagem;
 
     public GaragemResponseDTO(Garagem garagem) {
         this.id = garagem.getId();
         this.nome = garagem.getNome();
         this.endereco = garagem.getEndereco();
+        this.garagem = new HashMap<String, Object>();
+        this.garagem.put(nome, garagem.getNome());
     }
     
     public Long getId() {

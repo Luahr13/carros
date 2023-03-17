@@ -1,9 +1,18 @@
 package br.unitins.dto;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+
 public class CarroDTO {
     
+    @NotNull(message = "O campo não pode ser nulo.")
     private String modelo;
+    
+    @NotBlank(message = "O campo nome deve ser informado.")
     private String cor;
+    
+    @NotEmpty(message = "O campo nome deve ser informado.")
     private Long idGaragem;
     
     public String getModelo() {

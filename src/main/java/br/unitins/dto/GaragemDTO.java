@@ -5,16 +5,13 @@ import javax.validation.constraints.NotNull;
 
 public class GaragemDTO {
     
-    @NotBlank(message = "O campo nome deve ser informado.")
     @NotNull(message = "O campo não pode ser nulo.")
     private String nome;
     
     @NotBlank(message = "O campo nome deve ser informado.")
-    @NotNull(message = "O campo não pode ser nulo.")
     private String endereco;
     
     @NotBlank(message = "O campo nome deve ser informado.")
-    @NotNull(message = "O campo não pode ser nulo.")
     private String telefone;
     
     public String getNome() {

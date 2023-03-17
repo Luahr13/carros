@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.inject.Inject;
 import javax.transaction.Transactional;
+import javax.validation.Valid;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -31,7 +32,7 @@ public class CarroResource {
     //Insere
     @POST
     @Transactional
-    public Response insert(CarroDTO dto){
+    public Response insert(@Valid CarroDTO dto){
         CarroResponseDTO carro = carroService.create(dto);
         return Response.status(Status.CREATED).entity(carro).build();
 
@@ -62,7 +63,7 @@ public class CarroResource {
     @PUT
     @Path("/{id}")
     @Transactional
-    public Response updateCarro(@PathParam("id") Long id, CarroDTO dto){
+    public Response updateCarro(@Valid @PathParam("id") Long id, CarroDTO dto){
         CarroResponseDTO carro = carroService.update(id, dto);
         return Response.status(Status.NO_CONTENT).entity(carro).build();
     }
@@ -71,9 +72,15 @@ public class CarroResource {
     @DELETE
     @Path("/{id}")
     @Transactional
-    public Response deletarCarro(@PathParam("id") Long id){
+    public Response deletarCarro(@Valid @PathParam("id") Long id){
         carroService.delete(id);
         return Response.status(Status.NO_CONTENT).build();
+    }
+
+    @GET
+    @Path("Count")
+    public long count() {
+        return carroService.count();
     }
 
 }
