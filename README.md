@@ -3,22 +3,20 @@
 </h1>
 
 ## Projeto Carros
+*RestEasy Classic
+*SmallRye OpenAPI
+*RestEasy Jackson Classic
+*Hibernate ORM with Panache
 
-[![Quarkus]]
-[![Java]]
 
 
-## Recursos para o README
-
-[![Card](https://img.shields.io/badge/cards%20estrelas%20-%23323330.svg?&style=for-the-badge&logo=cards%20estrelas&logoColor=black&color=FFB800)](https://github.com/iuricode/readme-template/blob/main/cards-stats/cards-stats.md)
-[![Badge](https://img.shields.io/badge/badges%20-%23323330.svg?&style=for-the-badge&logo=badges&logoColor=black&color=006DEC)](https://github.com/iuricode/readme-template/blob/main/badges/badges.md)
 
 ---
 
 ## ☕ Seja um dos contribuidores
 
-Quer fazer parte desse projeto? Clique [AQUI](CONTRIBUTING.md) e leia como contribuir.<br>
+Projeto elaborado durante a matéria de Topicos1 Ministrada pelo professor Janio
 
 ## 🍜 Licença
 
-Esse projeto está sob licença. Veja o arquivo [LICENÇA](LICENSE.md) para mais detalhes.<br>
+Espero que tenha gostado!!!
