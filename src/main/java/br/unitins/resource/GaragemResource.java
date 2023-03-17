@@ -4,6 +4,7 @@ package br.unitins.resource;
 import java.util.List;
 
 import javax.inject.Inject;
+import javax.transaction.Transactional;
 import javax.validation.Valid;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
@@ -31,6 +32,7 @@ public class GaragemResource {
 
     //Insere
     @POST
+    @Transactional
     public Response insert(@Valid GaragemDTO garagemDTO){
         GaragemResponseDTO garagem = garagemService.create(garagemDTO);
         return Response.status(Status.CREATED).entity(garagem).build();
@@ -59,6 +61,7 @@ public class GaragemResource {
     //Atualiza
     @PUT
     @Path("/{id}")
+    @Transactional
     public Response updateGaragem(@Valid @PathParam("id") Long id, GaragemDTO garagemDTO){
         GaragemResponseDTO garagem = garagemService.update(id, garagemDTO);
         return Response.status(Status.NO_CONTENT).entity(garagem).build();
@@ -67,6 +70,7 @@ public class GaragemResource {
     //Deletar um obj por ID
     @DELETE
     @Path("/{id}")
+    @Transactional
     public Response deletarCarro(@Valid @PathParam("id") Long id){
         garagemService.delete(id);
         return Response.status(Status.NO_CONTENT).build();
