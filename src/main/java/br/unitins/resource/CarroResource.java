@@ -64,7 +64,7 @@ public class CarroResource {
     @Transactional
     public Response updateCarro(@PathParam("id") Long id, CarroDTO dto){
         CarroResponseDTO carro = carroService.update(id, dto);
-        return Response.ok(carro).build();
+        return Response.status(Status.NO_CONTENT).entity(carro).build();
     }
 
     //Deletar um obj por ID
