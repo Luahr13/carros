@@ -52,6 +52,8 @@ public class GaragemServiceImpl implements GaragemService{
         entity.setEndereco(garagemDTO.getEndereco());
         entity.setTelefone(garagemDTO.getTelefone());
 
+        garagemRepository.persist(entity);
+
         return new GaragemResponseDTO(entity);
     }
 
